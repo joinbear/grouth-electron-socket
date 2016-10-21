@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>程序抓取</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.list {
+			width: 600px;
+			margin: 0 auto;
+		}
+		.list-item {
+			line-height: 2;
+			font-size: 16px;
+			color: green;
+			font-weight: bold;
+		}
+		.list-item + .list-item {
+			border-bottom: 1px solid #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="list" id="show-box">
+		
+	</div>
+	<script type="text/javascript" src="/socket.js"></script>
+	<script type="text/javascript">
+		var socket = io('http://localhost:5000');
+	  socket.on('message',function(data){
+	  	document.querySelector('#show-box').innerHTML += '<p class="list-item">'+data.message+'</p>';
+	  })
+	  socket.on('loading', function (data) {
+	  	document.querySelector('#show-box').innerHTML += '<p class="list-item">'+data.message+'</p>';
+	  });
+	</script>
+</body>
+</html>
