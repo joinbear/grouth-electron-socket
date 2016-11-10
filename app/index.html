@@ -3,14 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>程序抓取</title>
+	<link rel="stylesheet" href="/bootstrap.min.css">
 	<style type="text/css">
-		* {
-			padding: 0;
-			margin: 0;
-		}
-		.list {
-			width: 600px;
+		.panel {
 			margin: 0 auto;
+			width: 600px;
 		}
 		.list-item {
 			line-height: 2;
@@ -21,21 +18,27 @@
 		.list-item + .list-item {
 			border-bottom: 1px solid #ddd;
 		}
+		.text-right {
+			text-align: right;
+		}
 	</style>
 </head>
 <body>
-	<div class="list" id="show-box">
-		
+<!-- 	<div class="text-right"><button id="config" class="btn btn-primary">配置相关信息</button></div> -->
+	<div class="panel panel-success">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">数据抓取详情</div>
+	  <div class="panel-body" id="show-box"></div>
 	</div>
-	<script type="text/javascript" src="/socket.js"></script>
-	<script type="text/javascript">
-		var socket = io('http://localhost:5000');
-	  socket.on('message',function(data){
-	  	document.querySelector('#show-box').innerHTML += '<p class="list-item">'+data.message+'</p>';
-	  })
-	  socket.on('loading', function (data) {
-	  	document.querySelector('#show-box').innerHTML += '<p class="list-item">'+data.message+'</p>';
-	  });
-	</script>
+<!-- Insert this line above script imports  -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+<!-- normal script imports etc  -->
+<script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
+
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+<script type="text/javascript" src="/socket.js"></script>
+<script type="text/javascript" src="/config.js"></script>
 </body>
 </html>

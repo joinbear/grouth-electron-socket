@@ -5,14 +5,13 @@ const schedule        = require('node-schedule');
 const express         = require('express');
 const rule            = new schedule.RecurrenceRule();  
 const times           = [8,9,10,11,12,13,14,15,16,17,18,19,20,21];  
-const common_keywords = ['销售','销售代表','销售业务','销售经理','业务','业务代表','应届','实习','市场营销','营销'];
 /**
  * [zhilian zhilian实例参数对象]
  * @type {Object}
  */
 const zhilian = {
 	url : 'http://sou.zhaopin.com/jobs/searchresult.ashx?jl=%E6%88%90%E9%83%BD&sm=0&p=1&kw=',
-	keywords : common_keywords,
+	keywords : ['销售','销售代表','销售业务','销售经理','业务','业务代表','置业顾问','实习','市场营销','营销'],
 	tabName : '智联',
 	domList : {
 		list : '#newlist_list_div .newlist',
@@ -25,7 +24,7 @@ const zhilian = {
  */
 const wuba = {
 	url : 'http://cd.58.com/job/?utm_source=market&spm=b-31580022738699-me-f-824.bdpz_biaoti&PGTID=0d100000-0006-6617-9116-32a591713312&ClickID=2&key=',
-	keywords : common_keywords,
+	keywords : ['销售','销售代表','销售业务','销售经理','业务','业务代表','应届','实习','市场营销','营销','置业顾问'],
 	tabName : '58同城',
 	domList : {
 		list : '#infolist dl',
@@ -38,7 +37,7 @@ const wuba = {
  */
 const job51 = {
 	url : 'http://search.51job.com/jobsearch/search_result.php?fromJs=1&jobarea=090200%2C00&funtype=0000&industrytype=00&keywordtype=2&lang=c&stype=2&postchannel=0000&fromType=1&confirmdate=9&keyword=',
-	keywords : ['销售','销售代表','销售经理','业务','业务员','销售业务','市场营销','营销','应届','实习'],
+	keywords : ['销售','销售代表','销售经理','业务','业务员','销售业务','市场营销','营销','应届','实习','置业顾问'],
 	tabName : '51job',
 	domList : {
 		list : '#resultList .el',
@@ -50,8 +49,12 @@ module.exports = ()=>{
 	const server = require('http').createServer(app).listen(5000);
 	const io     = require('socket.io')(server);
 	app.use(express.static(path.join(__dirname ,'javascript') ));
+	app.use(express.static(path.join(__dirname ,'stylesheet') ));
 	app.get('/',(req,res)=>{
 		res.sendFile(__dirname + '/index.html');
+	});
+	app.get('/config',(req,res)=>{
+		res.sendFile(__dirname + '/config.html');
 	});
 	io.on('connection',(socket)=>{
 	  socket.on('disconnect',()=>{
