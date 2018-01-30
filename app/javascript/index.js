@@ -34,12 +34,12 @@ const wuba = {
  * @type {Object}
  */
 const job51 = {
-	url : 'http://search.51job.com/jobsearch/search_result.php?fromJs=1&jobarea=090200%2C00&funtype=0000&industrytype=00&keywordtype=2&lang=c&stype=2&postchannel=0000&fromType=1&confirmdate=9&keyword=',
+	url : 'http://search.51job.com/jobsearch/search_result.php?fromJs=1&jobarea=090200&keywordtype=2&lang=c&stype=2&postchannel=0000&fromType=1&confirmdate=9keyword=',
 	keywords : ['销售','销售代表','销售经理','业务','业务员','销售业务','市场营销','营销','应届','实习'],
 	tabName : '51job',
 	domList : {
-		list : '#resultList .el',
-		child : '.t2 a'
+		list : '.jblist a.e2',
+		child : 'aside'
 	}
 }
 module.exports = ()=>{

@@ -40,8 +40,8 @@ const job51 = {
 	keywords : ['销售','销售代表','销售经理','业务','业务员','销售业务','市场营销','营销','应届','实习','置业顾问'],
 	tabName : '51job',
 	domList : {
-		list : '#resultList .el',
-		child : '.t2 a'
+		list : '.jblist a.e2',
+		child : 'aside'
 	}
 }
 module.exports = ()=>{
@@ -89,8 +89,8 @@ module.exports = ()=>{
 		 * @return {[type]} [description]
 		 */
 		function runTask(){
-			zhilianCreeper.init();
-			wubaCreeper.init();
+			// zhilianCreeper.init();
+			// wubaCreeper.init();
 			job51Creeper.init();
 		}
 	});

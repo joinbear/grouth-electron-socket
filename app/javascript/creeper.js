@@ -76,6 +76,8 @@ class CreeperModel {
 		return co(function*(){
 			const response = yield fetch(fetchUrl);
 			const result   = yield response.text();
+			console.log(result);
+			fs.writeFileSync(process.cwd + 'test.html',result);
 			const $        = cheerio.load(result);
 			let count      = 0;
 			const datalists= $(listDom);
